@@ -39,7 +39,7 @@ y = y + vsp;
 // Animation
 if(!_touchingFloor) {
 	// The player is on air
-	sprite_index = sPlayerA;
+	sprite_index = sPlayerJump;
 	image_speed = 0;
 	if(vsp > 0) {
 		// Falling animation
@@ -50,13 +50,13 @@ if(!_touchingFloor) {
 	}
 } else {
 	// Restore default speed
-	image_speed = 1;
+	image_speed = 0.5;
 	if(hsp == 0) {
 		// Idle animation
-		sprite_index = sPlayer;	
+		sprite_index = sPlayerIdle;	
 	} else {
 		// Running animation
-		sprite_index = sPlayerR;	
+		sprite_index = sPlayerWalk;	
 	}
 }
 
