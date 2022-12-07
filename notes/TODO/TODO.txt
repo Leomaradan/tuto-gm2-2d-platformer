@@ -1,0 +1,3 @@
+Reset on falling
+Add enemy/obstacles
+Bigger room with camera
