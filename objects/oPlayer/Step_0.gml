@@ -38,22 +38,29 @@ y = y + vsp;
 
 // Animation
 if(!_touchingFloor) {
+	// The player is on air
 	sprite_index = sPlayerA;
 	image_speed = 0;
 	if(vsp > 0) {
+		// Falling animation
 		image_index = 1;	
 	} else {
+		// Jumping animation
 		image_index = 0;	
 	}
 } else {
+	// Restore default speed
 	image_speed = 1;
 	if(hsp == 0) {
+		// Idle animation
 		sprite_index = sPlayer;	
 	} else {
+		// Running animation
 		sprite_index = sPlayerR;	
 	}
 }
 
 if(hsp != 0) {
+	// Change sprite orientation based on horizontal speed
 	image_xscale = sign(hsp);	
 }
