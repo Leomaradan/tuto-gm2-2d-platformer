@@ -3,6 +3,6 @@
 with(oPlayer) {
 	if(has_control) {
 		has_control = false;
-		SlideTransition(TRANS_MODE.NEXT);
+		slideTransition(TRANS_MODE.NEXT);
 	}
 }
