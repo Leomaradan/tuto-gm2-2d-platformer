@@ -1,1 +1,1 @@
-SlideTransition(TRANS_MODE.RESTART);
+slideTransition(TRANS_MODE.RESTART);

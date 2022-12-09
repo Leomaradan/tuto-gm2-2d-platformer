@@ -1,2 +1,2 @@
 /// @description Instant Kill
-game_restart();
+slideTransition(TRANS_MODE.RESTART);
