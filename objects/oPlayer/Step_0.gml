@@ -1,11 +1,19 @@
 /// @description Core Player Logic
 
+#region Controls
+if(has_control) {
 // Get player inputs
-key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-key_jump = keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("W")); // Only true on the first frame where space is pressed
+	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+	key_jump = keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("W")); // Only true on the first frame where space is pressed
+} else {
+	key_left = 0;	
+	key_right = 0;	
+	key_jump = 0;	
+}
+#endregion
 
-// Calculate movement
+#region Calculate movement
 var _move = key_right - key_left; // 1 for right, -1 for left
 var _touchingFloor = place_meeting(x, y+1, oWall);
 
@@ -16,7 +24,9 @@ vsp = vsp + grv;
 if (_touchingFloor && key_jump) {
 	vsp = -jumpsp;
 }
+#endregion
 
+#region Collisions
 // Horizontal collision (but getting as close as possible)
 if (place_meeting(x+hsp, y, oWall)) {
 	// Sign will return -1 or 1 depending on the base sign of the input. So in this loop, we move 1px each time to fine the closest position
@@ -35,8 +45,9 @@ if (place_meeting(x, y+vsp, oWall)) {
 	vsp = 0;
 }
 y = y + vsp;	
+#endregion
 
-// Animation
+#region Animation
 if(!_touchingFloor) {
 	// The player is on air
 	sprite_index = sPlayerJump;
@@ -64,3 +75,4 @@ if(hsp != 0) {
 	// Change sprite orientation based on horizontal speed
 	image_xscale = sign(hsp);	
 }
+#endregion
